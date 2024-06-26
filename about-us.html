@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questões abordando músicas</title>
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/icons.css">
+    <link rel="stylesheet" href="css/responsee.css">
+    <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+    <!-- CUSTOM STYLE -->      
+    <link rel="stylesheet" href="css/template-style.css">
+    <link href="https://fonts.googleapis.com/css?family=Barlow:100,300,400,700,800&amp;subset=latin-ext" rel="stylesheet">  
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>    
+ </head>
+
+ <!--
+    You can change the color scheme of the page. Just change the class of the <body> tag. 
+    You can use this class: "primary-color-white", "primary-color-red", "primary-color-orange", "primary-color-blue", "primary-color-aqua", "primary-color-dark" 
+    -->
+    
+    <!--
+    Each element is able to have its own background or text color. Just change the class of the element.  
+    You can use this class: 
+    "background-white", "background-red", "background-orange", "background-blue", "background-aqua", "background-primary" 
+    "text-white", "text-red", "text-orange", "text-blue", "text-aqua", "text-primary"
+    -->
+
+   <body class="size-1520 primary-color-red background-dark">
+      <!-- HEADER -->
+      <header class="grid">
+        <!-- Top Navigation -->
+        <nav class="s-12 grid background-none background-primary-hightlight">
+           <!-- logo -->
+           <a href="index.html" class="m-12 l-3 padding-2x logo">
+              <img src="img/logo.svg">
+           </a>
+           <div class="top-nav s-12 l-9"> 
+            <ul class="top-ul right chevron">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about-us.html">Questões</a></li>
+              <li><a href="services.html">Fórmulas</a></li>
+              <li><a href="gallery.html">Planos de aulas</a></li>
+              <li><a href="contact.html">Cronograma de estudos</a></li>
+            </ul>
+           </div>
+        </nav>
+      </header>
+        <!-- SECTION 1 -->
+        <section class="grid">        
+          <div class="s-12 padding-2x">
+            <h1 class="text-strong text-white text-center center text-size-60 text-uppercase margin-bottom-20">Questões que abordam músicas</h1>
+          </div>
+        </section>
+  
+<title>Filtro de Questões</title>
+<style>
+    /* Estilos simples para a página */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    input, select {
+        width: 200px;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    .questao {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<!-- Inputs de filtro -->
+<input type="text" id="filtro" onkeyup="filtrarQuestoes()" placeholder="Digite para filtrar...">
+<select id="categoria" onchange="filtrarQuestoes()">
+    <option value="">Todas as Categorias</option>
+    <option value="Portugues">Português</option>
+    <option value="matematica">Matemática</option>
+    <option value="Biolgia">Biologia</option>
+    <option value="Quimica">Química</option>
+    <option value="Fisica">Física</option>
+    <option value="Historia">História</option>
+    <option value="Geografia">Geografia</option>
+</select>
+
+
+<!-- Lista de questões -->
+<div id="lista-questoes">
+    <div class="questao" data-tags="html css" data-estado="resolvido" data-data="2024-06-10">
+        <h3>Como alinhar elementos no CSS?</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="questao" data-tags="javascript" data-estado="pendente" data-data="2024-06-08">
+        <h3>Como usar o loop for em JavaScript?</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <div class="questao" data-tags="html" data-estado="resolvido" data-data="2024-06-05">
+        <h3>O que é HTML?</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+</div>
+
+<script>
+function filtrarQuestoes() {
+    var filtroTexto, filtroCategoria, filtroEstado, filtroData, lista, questoes;
+    filtroTexto = document.getElementById('filtro').value.toUpperCase();
+    filtroCategoria = document.getElementById('categoria').value.toLowerCase();
+    filtroEstado = document.getElementById('estado').value.toLowerCase();
+    filtroData = document.getElementById('data').value;
+
+    lista = document.getElementById('lista-questoes');
+    questoes = lista.getElementsByClassName('questao');
+
+    for (var i = 0; i < questoes.length; i++) {
+        var texto = questoes[i].getElementsByTagName('h3')[0].innerText.toUpperCase();
+        var tags = questoes[i].getAttribute('data-tags').toLowerCase();
+        var estado = questoes[i].getAttribute('data-estado').toLowerCase();
+        var data = questoes[i].getAttribute('data-data');
+
+        if ((texto.indexOf(filtroTexto) > -1 || tags.indexOf(filtroTexto) > -1) &&
+            (filtroCategoria === '' || tags.indexOf(filtroCategoria) > -1) &&
+            (filtroEstado === '' || estado === filtroEstado) &&
+            (filtroData === '' || data === filtroData)) {
+            questoes[i].style.display = '';
+        } else {
+            questoes[i].style.display = 'none';
+        }
+    }
+}
+</script>
+
+</body>
+</html>
